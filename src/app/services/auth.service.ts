@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
-import {AngularFirestore} from "@angular/fire/compat/firestore";
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+  AngularFirestoreDocument,
+  CollectionReference
+} from "@angular/fire/compat/firestore";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {Router} from "@angular/router";
 import firebase from "firebase/compat";
 import User = firebase.User;
@@ -10,7 +15,8 @@ import User = firebase.User;
   providedIn: 'root'
 })
 export class AuthService {
-  user$ = new BehaviorSubject<any>(null);
+  user$ = new BehaviorSubject<any | firebase.User>(null);
+  private dbPath = 'users';
   constructor(private angularFirestore: AngularFirestore,
               private angularFireAuth: AngularFireAuth,
               private router: Router) {
@@ -41,12 +47,11 @@ export class AuthService {
 
   signOut() {
     return this.angularFireAuth.signOut().then(() => {
-      localStorage.removeItem('user');
       this.router.navigate(['auth']);
     });
   }
 
-  isLoggedIn() {
-    return this.angularFireAuth.user
+  getCollectionDocuments(): Observable<unknown> {
+    return this.angularFirestore.collection(this.dbPath).doc('y9RMaZZhzxYrhoDorUoRplzeKiE3').valueChanges();
   }
 }
