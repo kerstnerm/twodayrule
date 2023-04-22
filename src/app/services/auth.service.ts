@@ -6,7 +6,7 @@ import {
   CollectionReference
 } from "@angular/fire/compat/firestore";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {BehaviorSubject, Observable} from "rxjs";
+import {BehaviorSubject, Observable, switchMap} from "rxjs";
 import {Router} from "@angular/router";
 import firebase from "firebase/compat";
 import User = firebase.User;
@@ -51,7 +51,9 @@ export class AuthService {
     });
   }
 
-  getCollectionDocuments(): Observable<unknown> {
-    return this.angularFirestore.collection(this.dbPath).doc('y9RMaZZhzxYrhoDorUoRplzeKiE3').valueChanges();
+  getUserProfile(): Observable<unknown> {
+    return this.angularFireAuth.user.pipe(
+      switchMap(res => this.angularFirestore.collection(this.dbPath).doc(res?.uid).valueChanges())
+    );
   }
 }
