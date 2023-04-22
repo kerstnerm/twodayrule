@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {AuthGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -13,7 +12,6 @@ const routes: Routes = [
   }, */
   {
     path: '',
-    canActivate: [AuthGuard],
     loadChildren: () => import('./pages/welcome/welcome.module').then((m) => m.WelcomeModule)
   },
   { path: '**', redirectTo: 'error/404' },

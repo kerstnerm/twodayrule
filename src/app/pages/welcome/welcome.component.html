@@ -1,3 +1,9 @@
 <h1 class="text-3xl font-bold underline">
   Welcome
 </h1>
+<ng-container *ngIf="authService.user$ | async as user">
+  {{user | json}}
+</ng-container>
+<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="authService.signOut()">
+  Logout
+</button>
