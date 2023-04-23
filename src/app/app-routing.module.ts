@@ -12,7 +12,7 @@ const routes: Routes = [
   }, */
   {
     path: '',
-    loadChildren: () => import('./pages/welcome/welcome.module').then((m) => m.WelcomeModule)
+    loadChildren: () => import('./pages/control-panel/control-panel.module').then((m) => m.ControlPanelModule)
   },
   { path: '**', redirectTo: 'error/404' },
 ];

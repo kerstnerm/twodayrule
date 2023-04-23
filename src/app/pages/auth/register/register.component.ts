@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {AuthService} from "../../../services/auth.service";
+import {SignUpModel} from "../../../models/sign-up-model";
 
 @Component({
   selector: 'app-register',
@@ -6,5 +8,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
+  signUpData: SignUpModel = {
+    displayName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    description: ''
+  };
 
+  constructor(private authService: AuthService) {
+
+  }
+
+  register() {
+    this.authService.signUp(this.signUpData);
+  }
 }
