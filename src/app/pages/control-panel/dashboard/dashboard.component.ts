@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as dayjs from "dayjs";
 
 @Component({
   selector: 'app-dashboard',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
+  date: string;
+
+  constructor() {
+    this.date = dayjs().format('YYYY-MM-DD HH:mm')
+  }
 
 }

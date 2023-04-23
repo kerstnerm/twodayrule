@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/two-day-rule",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
