@@ -15,6 +15,9 @@ import {SignUpModel} from "../models/sign-up-model";
 export class AuthService {
   user$ = new BehaviorSubject<any | firebase.User>(null);
   private dbPath = 'users';
+  signInErrorMessage$ = new BehaviorSubject<string | null>(null);
+  signUpErrorMessage$ = new BehaviorSubject<string | null>(null);
+  isLoading$ = new BehaviorSubject<boolean>(false);
   constructor(private angularFirestore: AngularFirestore,
               private angularFireAuth: AngularFireAuth,
               private router: Router) {
@@ -34,27 +37,28 @@ export class AuthService {
         this.angularFireAuth.authState.subscribe((user) => {
           if (user) {
             this.router.navigate(['/app']);
+            this.signInErrorMessage$.next(null);
           }
         });
       })
       .catch((error) => {
-        window.alert(error.message);
+        this.signInErrorMessage$.next(error.message);
       });
   }
 
   signUp(signUpData: SignUpModel) {
+    this.isLoading$.next(true);
     return this.angularFireAuth
       .createUserWithEmailAndPassword(signUpData.email, signUpData.password)
       .then((result) => {
-        /* Call the SendVerificaitonMail() function when new user sign
-        up and returns promise */
-        // this.SendVerificationMail();
-        // this.SetUserData(result.user);
-        this.createProfile(signUpData, result.user?.uid)
+        this.createProfile(signUpData, result.user?.uid).then(() => {
+          this.router.navigate(['/app']);
+          this.signUpErrorMessage$.next(null);
+        })
       })
       .catch((error) => {
-        window.alert(error.message);
-      });
+        this.signUpErrorMessage$.next(error.message);
+      }).finally(() => this.isLoading$.next(false));
   }
 
   createProfile(signUpData: SignUpModel, uid: string | undefined) {

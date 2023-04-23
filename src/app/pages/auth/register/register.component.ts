@@ -16,11 +16,7 @@ export class RegisterComponent {
     description: ''
   };
 
-  constructor(private authService: AuthService) {
+  constructor(public authService: AuthService) {
 
-  }
-
-  register() {
-    this.authService.signUp(this.signUpData);
   }
 }
