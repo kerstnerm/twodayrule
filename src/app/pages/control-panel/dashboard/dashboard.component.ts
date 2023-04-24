@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import * as dayjs from "dayjs";
 import {HabitService} from "../../../services/habit.service";
+import {Observable} from "rxjs";
+import {Habit} from "../../../models/habit";
 
 @Component({
   selector: 'app-dashboard',
@@ -10,19 +12,20 @@ import {HabitService} from "../../../services/habit.service";
 export class DashboardComponent implements OnInit{
 
   selectedDate: string | undefined;
+  habits$: Observable<Habit[]> | undefined;
 
   constructor(private habitService: HabitService) {
   }
 
   ngOnInit(): void {
-    this.habitService.getHabits().subscribe((res: { startDate: string | number | Date | dayjs.Dayjs | null | undefined; }) => {
+    /* this.habitService.getHabits().subscribe((res) => {
       console.log(res);
       // @ts-ignore
       console.log('date', res[0].startDate.toDate())
       // this.habitService.setHabit({data: res}).subscribe();
-    })
+    }) */
 
-
+    this.habits$ = this.habitService.getHabits();
   }
 
   selectDate($event: string) {

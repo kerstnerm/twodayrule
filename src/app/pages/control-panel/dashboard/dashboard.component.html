@@ -10,6 +10,10 @@
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">+</h5>
       </a>
     </div>
-    <app-habit></app-habit>
+    <ng-container *ngIf="habits$ | async as habits">
+      <ng-container *ngFor="let habit of habits">
+        <app-habit [habit]="habit" [selectedDate]="selectedDate"></app-habit>
+      </ng-container>
+    </ng-container>
   </div>
 </div>

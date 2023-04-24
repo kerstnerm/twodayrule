@@ -4,6 +4,7 @@ import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {map, Observable, switchMap} from "rxjs";
 import {UserProfile} from "../models/user-profile";
+import {Habit} from "../models/habit";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class HabitService {
       map((res: any) => {
         return res.data;
       })
-    );
+    ) as Observable<Habit[]>;
   }
 
   setHabit(habit: any) {
