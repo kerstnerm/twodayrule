@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import * as dayjs from "dayjs";
-import {DateItem} from "../../../models/date-item";
 import {HabitService} from "../../../services/habit.service";
 
 @Component({
@@ -11,6 +10,7 @@ import {HabitService} from "../../../services/habit.service";
 export class DashboardComponent implements OnInit{
 
   selectedDate: string | undefined;
+
   constructor(private habitService: HabitService) {
   }
 

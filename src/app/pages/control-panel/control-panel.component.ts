@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {Observable} from "rxjs";
 import {UserProfile} from "../../models/user-profile";
-import {ActivatedRoute, Route, Router} from "@angular/router";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-welcome',

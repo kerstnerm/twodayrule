@@ -10,6 +10,7 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
 import {environment} from "../environments/environment";
 import {AngularFireAuthGuardModule} from "@angular/fire/compat/auth-guard";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {AngularFireAuthGuardModule} from "@angular/fire/compat/auth-guard";
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
