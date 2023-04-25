@@ -2,6 +2,7 @@ import firebase from "firebase/compat";
 import Timestamp = firebase.firestore.Timestamp;
 
 export interface Habit {
+  uid: string;
   color: string;
   description: string;
   goal: number;

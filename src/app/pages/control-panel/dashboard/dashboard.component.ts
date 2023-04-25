@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import * as dayjs from "dayjs";
 import {HabitService} from "../../../services/habit.service";
-import {Observable} from "rxjs";
+import {Observable, tap} from "rxjs";
 import {Habit} from "../../../models/habit";
 
 @Component({
@@ -25,7 +25,11 @@ export class DashboardComponent implements OnInit{
       // this.habitService.setHabit({data: res}).subscribe();
     }) */
 
-    this.habits$ = this.habitService.getHabits();
+    this.habits$ = this.habitService.getHabits().pipe(
+      tap(res => {
+        console.log(res);
+      })
+    );
   }
 
   selectDate($event: string) {
