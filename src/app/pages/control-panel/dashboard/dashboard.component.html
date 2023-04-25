@@ -10,10 +10,14 @@
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">+</h5>
       </a>
     </div>
-    <ng-container *ngIf="habits$ | async as habits">
+    <ng-container *ngIf="habits$ | async as habits; else loading">
       <ng-container *ngFor="let habit of habits">
         <app-habit [habit]="habit" [selectedDate]="selectedDate" (updateHabit)="updateHabit($event)"></app-habit>
       </ng-container>
     </ng-container>
+
+    <ng-template #loading>
+      <app-skeleton-habit *ngFor="let i of [0,1]"></app-skeleton-habit>
+    </ng-template>
   </div>
 </div>

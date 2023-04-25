@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import * as dayjs from "dayjs";
 import {HabitService} from "../../../services/habit.service";
-import {Observable, take, tap} from "rxjs";
+import {delay, Observable, take, tap} from "rxjs";
 import {Habit} from "../../../models/habit";
 
 @Component({
@@ -29,7 +29,8 @@ export class DashboardComponent implements OnInit{
     this.habits$ = this.habitService.getHabits().pipe(
       tap(res => {
         this.habitsArray = res;
-      })
+      }),
+      delay(500)
     );
   }
 

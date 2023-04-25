@@ -7,13 +7,15 @@ import {DatePickerComponent} from "../../components/date-picker/date-picker.comp
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {HabitComponent} from "../../components/habit/habit.component";
 import {TippyDirective} from "@ngneat/helipopper";
+import {SkeletonHabitComponent} from "../../components/skeleton-habit/skeleton-habit.component";
 
 @NgModule({
   declarations: [
     ControlPanelComponent,
     DashboardComponent,
     DatePickerComponent,
-    HabitComponent
+    HabitComponent,
+    SkeletonHabitComponent
   ],
   imports: [
     CommonModule,
