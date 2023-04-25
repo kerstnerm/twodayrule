@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import * as dayjs from "dayjs";
 import {HabitService} from "../../../services/habit.service";
-import {Observable, tap} from "rxjs";
+import {Observable, take, tap} from "rxjs";
 import {Habit} from "../../../models/habit";
 
 @Component({
@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit{
 
   selectedDate: string | undefined;
   habits$: Observable<Habit[]> | undefined;
+  habitsArray: Habit[] | undefined;
 
   constructor(private habitService: HabitService) {
   }
@@ -27,12 +28,20 @@ export class DashboardComponent implements OnInit{
 
     this.habits$ = this.habitService.getHabits().pipe(
       tap(res => {
-        console.log(res);
+        this.habitsArray = res;
       })
     );
   }
 
   selectDate($event: string) {
     this.selectedDate = $event;
+  }
+
+  updateHabit(habit: Habit) {
+    if (this.habitsArray) {
+      const idx = this.habitsArray?.findIndex(h => h.uid === habit.uid);
+      this.habitsArray[idx] = habit;
+      this.habitService.setHabits({data: this.habitsArray}).pipe(take(1)).subscribe();
+    }
   }
 }

@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {faCheck} from "@fortawesome/free-solid-svg-icons";
 import {Habit} from "../../models/habit";
 import * as dayjs from "dayjs";
@@ -6,7 +6,6 @@ import {HabitService} from "../../services/habit.service";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import {take} from "rxjs";
-import { v4 as uuidv4 } from "uuid";
 
 @Component({
   selector: 'app-habit',
@@ -19,6 +18,7 @@ export class HabitComponent implements OnInit, OnChanges {
   @Input() selectedDate: string | undefined;
   currentValue = 0;
   todayDate: string | undefined;
+  @Output() updateHabit = new EventEmitter<Habit>();
 
   constructor(private habitService: HabitService) {
   }
@@ -31,8 +31,6 @@ export class HabitComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.todayDate = dayjs().format('YYYY-MM-DD');
-    console.log('todayDate', this.todayDate)
-    console.log('selectedDate', this.selectedDate);
   }
 
   private calculateCurrentValueBySelectedDate() {
@@ -54,10 +52,7 @@ export class HabitComponent implements OnInit, OnChanges {
       history.push(newHistoryItem);
       this.habit.history = history;
       this.calculateCurrentValueBySelectedDate();
-      // array is temp
-      this.habitService.setHabit({data: [this.habit]}).pipe(take(1)).subscribe(res => {
-        console.log(res);
-      });
+      this.updateHabit.emit(this.habit);
     }
   }
 }

@@ -12,7 +12,7 @@
     </div>
     <ng-container *ngIf="habits$ | async as habits">
       <ng-container *ngFor="let habit of habits">
-        <app-habit [habit]="habit" [selectedDate]="selectedDate"></app-habit>
+        <app-habit [habit]="habit" [selectedDate]="selectedDate" (updateHabit)="updateHabit($event)"></app-habit>
       </ng-container>
     </ng-container>
   </div>

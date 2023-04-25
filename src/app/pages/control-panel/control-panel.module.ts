@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {DatePickerComponent} from "../../components/date-picker/date-picker.component";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {HabitComponent} from "../../components/habit/habit.component";
+import {TippyDirective} from "@ngneat/helipopper";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {HabitComponent} from "../../components/habit/habit.component";
   imports: [
     CommonModule,
     ControlPanelRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    TippyDirective
   ]
 })
 export class ControlPanelModule { }

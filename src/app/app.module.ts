@@ -11,6 +11,7 @@ import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
 import {environment} from "../environments/environment";
 import {AngularFireAuthGuardModule} from "@angular/fire/compat/auth-guard";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {popperVariation, provideTippyConfig, tooltipVariation} from "@ngneat/helipopper";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AngularFireDatabaseModule,
     FontAwesomeModule,
   ],
-  providers: [],
+  providers: [
+    provideTippyConfig({
+      defaultVariation: 'tooltip',
+      variations: {
+        tooltip: tooltipVariation,
+        popper: popperVariation,
+      }
+    })
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
