@@ -8,6 +8,9 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {HabitComponent} from "../../components/habit/habit.component";
 import {TippyDirective} from "@ngneat/helipopper";
 import {SkeletonHabitComponent} from "../../components/skeleton-habit/skeleton-habit.component";
+import {CreateHabitComponent} from "../create-habit/create-habit.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {AngularMyDatePickerModule} from "angular-mydatepicker";
 
 @NgModule({
   declarations: [
@@ -15,13 +18,17 @@ import {SkeletonHabitComponent} from "../../components/skeleton-habit/skeleton-h
     DashboardComponent,
     DatePickerComponent,
     HabitComponent,
-    SkeletonHabitComponent
+    SkeletonHabitComponent,
+    CreateHabitComponent
   ],
   imports: [
     CommonModule,
     ControlPanelRoutingModule,
     FontAwesomeModule,
-    TippyDirective
+    TippyDirective,
+    FormsModule,
+    AngularMyDatePickerModule,
+    ReactiveFormsModule
   ]
 })
 export class ControlPanelModule { }

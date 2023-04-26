@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
 import firebase from "firebase/compat";
 import {UserProfile} from "../models/user-profile";
 import {SignUpModel} from "../models/sign-up-model";
+import {HabitService} from "./habit.service";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,8 @@ export class AuthService {
   isLoading$ = new BehaviorSubject<boolean>(false);
   constructor(private angularFirestore: AngularFirestore,
               private angularFireAuth: AngularFireAuth,
-              private router: Router) {
+              private router: Router,
+              private habitService: HabitService) {
 
     this.angularFireAuth.authState.subscribe((user) => {
       if (user) {
@@ -50,11 +52,11 @@ export class AuthService {
     this.isLoading$.next(true);
     return this.angularFireAuth
       .createUserWithEmailAndPassword(signUpData.email, signUpData.password)
-      .then((result) => {
-        this.createProfile(signUpData, result.user?.uid).then(() => {
-          this.router.navigate(['/app']);
-          this.signUpErrorMessage$.next(null);
-        })
+      .then(async (result) => {
+        await this.createProfile(signUpData, result.user?.uid);
+        await this.habitService.setEmptyHabits(result?.user?.uid);
+        this.router.navigate(['/app']);
+        this.signUpErrorMessage$.next(null);
       })
       .catch((error) => {
         this.signUpErrorMessage$.next(error.message);

@@ -5,6 +5,7 @@ import {redirectUnauthorizedTo} from "@angular/fire/auth-guard";
 import {AngularFireAuthGuard} from "@angular/fire/compat/auth-guard";
 import {LoginComponent} from "../auth/login/login.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
+import {CreateHabitComponent} from "../create-habit/create-habit.component";
 
 const redirectUnauthorizedToAuth = () => redirectUnauthorizedTo(['/auth']);
 
@@ -18,6 +19,10 @@ export const routes = [
       {
         path: 'dashboard',
         component: DashboardComponent
+      },
+      {
+        path: 'habits/create',
+        component: CreateHabitComponent
       },
       {path: '**', redirectTo: 'dashboard'},
     ]

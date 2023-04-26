@@ -9,7 +9,7 @@ export interface Habit {
   icon: string;
   isActive: boolean;
   name: string;
-  startDate: string;
+  startDate: Timestamp;
   unit: string;
   history: { date: Timestamp; value: number }[];
 }

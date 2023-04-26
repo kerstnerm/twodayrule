@@ -26,7 +26,7 @@ import {popperVariation, provideTippyConfig, tooltipVariation} from "@ngneat/hel
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
-    FontAwesomeModule,
+    FontAwesomeModule
   ],
   providers: [
     provideTippyConfig({

@@ -6,13 +6,19 @@
 
   <div class="grid md:grid-cols-3 xs:grid-cols-1 gap-4 mb-4 h-full">
     <div class="flex items-center justify-center h-24">
-      <a href="#" class="text-center w-24 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+      <a routerLink="/app/habits/create" class="text-center w-24 p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">+</h5>
       </a>
     </div>
     <ng-container *ngIf="habits$ | async as habits; else loading">
       <ng-container *ngFor="let habit of habits">
-        <app-habit [habit]="habit" [selectedDate]="selectedDate" (updateHabit)="updateHabit($event)"></app-habit>
+        <ng-container *ngIf="checkHabitToShow(habit.startDate, selectedDate)"> <!-- filter for selected date -->
+          <app-habit [habit]="habit" [selectedDate]="selectedDate" (updateHabit)="updateHabit($event)"></app-habit>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngIf="habits.length === 0">
+        There are no habits in your profile.
       </ng-container>
     </ng-container>
 

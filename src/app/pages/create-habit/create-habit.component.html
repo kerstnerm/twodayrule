@@ -1,0 +1,72 @@
+<div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
+  <section class="bg-white dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
+      <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a new habit</h2>
+      <form (ngSubmit)="submit()" [formGroup]="habitForm">
+        <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+          <div class="sm:col-span-2">
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="name">Habit Name *</label>
+            <input
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              formControlName="name" id="name" name="name"
+              placeholder="cycling"
+              required="" type="text">
+          </div>
+          <div class="w-full">
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="unit">Unit *</label>
+            <input
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              formControlName="unit" id="unit" name="unit"
+              placeholder="minutes"
+              required="" type="text">
+          </div>
+          <div class="w-full">
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="goal">Goal (in 24
+              hours) *</label>
+            <input
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              formControlName="goal" id="goal" min="1" name="goal"
+              placeholder="30"
+              required="" type="number">
+          </div>
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="icon">Icon *</label>
+            <select
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              formControlName="icon" id="icon"
+              name="icon">
+              <option value="other">other</option>
+              <option value="bicycle">bicycle</option>
+              <option value="relax">relax</option>
+              <option value="phone">phone</option>
+            </select>
+          </div>
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="startDate">Start
+              date *</label>
+            <input
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              id="startDate" max="2099-12-31" name="startDate" [value]="today"
+              required=""
+              type="date">
+          </div>
+          <div class="sm:col-span-2 mb-2">
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                   for="description">Description</label>
+            <textarea
+              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              id="description"
+              placeholder="Your description here"
+              rows="8"></textarea>
+          </div>
+        </div>
+        <button #submitBtn (click)="submit()" [disabled]="!habitForm.valid"
+                [ngClass]="{'bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800' : habitForm.valid}"
+                class="w-full bg-gray-600 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                type="submit">
+          Add product
+        </button>
+      </form>
+    </div>
+  </section>
+</div>

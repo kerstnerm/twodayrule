@@ -3,13 +3,15 @@ import * as dayjs from "dayjs";
 import {HabitService} from "../../../services/habit.service";
 import {delay, Observable, take, tap} from "rxjs";
 import {Habit} from "../../../models/habit";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit{
+export class DashboardComponent implements OnInit {
 
   selectedDate: string | undefined;
   habits$: Observable<Habit[]> | undefined;
@@ -44,5 +46,10 @@ export class DashboardComponent implements OnInit{
       this.habitsArray[idx] = habit;
       this.habitService.setHabits({data: this.habitsArray}).pipe(take(1)).subscribe();
     }
+  }
+
+  checkHabitToShow(startDate: firebase.firestore.Timestamp, selectedDate: string | undefined) {
+    if (selectedDate) return dayjs(startDate.toDate()).format('YYYY-MM-DD') <= selectedDate;
+    return false;
   }
 }

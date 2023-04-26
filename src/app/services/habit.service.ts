@@ -24,6 +24,10 @@ export class HabitService {
     ) as Observable<Habit[]>;
   }
 
+  setEmptyHabits(uid: string | undefined) {
+    this.angularFirestore.collection(this.dbPath).doc(uid).set({data: []});
+  }
+
   setHabits(obj: {data: Habit[]}) {
     return this.angularFireAuth.user.pipe(
       switchMap(res => this.angularFirestore.collection(this.dbPath).doc(res?.uid).valueChanges().pipe(
