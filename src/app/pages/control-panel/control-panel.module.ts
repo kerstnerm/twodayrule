@@ -11,6 +11,7 @@ import {SkeletonHabitComponent} from "../../components/skeleton-habit/skeleton-h
 import {CreateHabitComponent} from "../create-habit/create-habit.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AngularMyDatePickerModule} from "angular-mydatepicker";
+import {FilterHabitsByDatePipe} from "../../pipes/filter-habits-by-date.pipe";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {AngularMyDatePickerModule} from "angular-mydatepicker";
     DatePickerComponent,
     HabitComponent,
     SkeletonHabitComponent,
-    CreateHabitComponent
+    CreateHabitComponent,
+    FilterHabitsByDatePipe
   ],
   imports: [
     CommonModule,
