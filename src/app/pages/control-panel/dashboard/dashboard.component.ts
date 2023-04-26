@@ -21,13 +21,6 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /* this.habitService.getHabits().subscribe((res) => {
-      console.log(res);
-      // @ts-ignore
-      console.log('date', res[0].startDate.toDate())
-      // this.habitService.setHabit({data: res}).subscribe();
-    }) */
-
     this.habits$ = this.habitService.getHabits().pipe(
       tap(res => {
         this.habitsArray = res;
