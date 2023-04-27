@@ -27,6 +27,7 @@
     "@ngneat/helipopper": "^7.1.1",
     "@ngneat/overview": "^4.1.0",
     "@types/uuid": "^9.0.1",
+    "animate.css": "^4.1.1",
     "dayjs": "^1.11.7",
     "firebase": "^9.20.0",
     "rxjs": "~7.8.0",

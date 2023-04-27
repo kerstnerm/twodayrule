@@ -20,6 +20,7 @@ export class HabitComponent implements OnInit, OnChanges {
   currentValue = 0;
   todayDate: string | undefined;
   @Output() updateHabit = new EventEmitter<Habit>();
+  progressbarWidth = 0;
 
   constructor(private habitService: HabitService) {
   }
@@ -41,6 +42,7 @@ export class HabitComponent implements OnInit, OnChanges {
       currentValue += history.value;
     })
     this.currentValue = currentValue;
+    this.calculateProgressBarWidth();
   }
 
   @debounce(200)
@@ -55,6 +57,16 @@ export class HabitComponent implements OnInit, OnChanges {
       this.habit.history = history;
       this.calculateCurrentValueBySelectedDate();
       this.updateHabit.emit(this.habit);
+    }
+  }
+
+  private calculateProgressBarWidth() {
+    if (this.habit) {
+      let value = Math.round((this.currentValue/this.habit?.goal)*100);
+      if (value > 100) {
+        value = 100;
+      }
+      this.progressbarWidth = value;
     }
   }
 }
