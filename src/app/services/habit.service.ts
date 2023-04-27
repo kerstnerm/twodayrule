@@ -20,8 +20,7 @@ export class HabitService {
     return this.angularFireAuth.user.pipe(
       switchMap(res => this.angularFirestore.collection(this.dbPath).doc(res?.uid).valueChanges()),
       tap((res: any) => {
-        const todayHabits = res.data.filter((h: Habit) => dayjs(h.startDate.toDate()).format('YYYY-MM-DD') <= dayjs().format('YYYY-MM-DD'));
-        this.todayHabits$.next(todayHabits.length);
+        this.calculateTodayNotDoneHabits(res.data);
       }),
       map((res: {data: Habit[]}) => {
         console.log(res);
@@ -42,4 +41,18 @@ export class HabitService {
     )
   }
 
+  private calculateTodayNotDoneHabits(data: Habit[]) {
+    const todayHabits = data.filter((h: Habit) => dayjs(h.startDate.toDate()).format('YYYY-MM-DD') <= dayjs().format('YYYY-MM-DD'));
+    let notDoneHabit = 0;
+    for (const habit of todayHabits as Habit[]) {
+      let count = 0;
+      for (const history of habit.history) {
+        count += history.value;
+      }
+      if (habit.goal > count) {
+        notDoneHabit ++
+      }
+    }
+    this.todayHabits$.next(notDoneHabit);
+  }
 }

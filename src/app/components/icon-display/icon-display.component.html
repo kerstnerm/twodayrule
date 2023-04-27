@@ -1,6 +1,6 @@
 <ng-container [ngSwitch]="icon">
   <ng-container *ngFor="let item of items">
-    <fa-icon *ngSwitchCase="item.name" [icon]="item.icon" ></fa-icon>
+    <fa-icon *ngSwitchCase="item.name" [icon]="item.icon" class="dark:text-purple-100"></fa-icon>
   </ng-container>
   <ng-container *ngSwitchCase="'none'"></ng-container>
   <ng-container *ngSwitchDefault></ng-container>
