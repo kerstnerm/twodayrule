@@ -5,7 +5,6 @@ import * as dayjs from "dayjs";
 import {HabitService} from "../../services/habit.service";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
-import {take} from "rxjs";
 import {debounce} from "../../decorators/debounce";
 
 @Component({

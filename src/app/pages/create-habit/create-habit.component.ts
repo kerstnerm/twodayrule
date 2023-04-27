@@ -8,6 +8,8 @@ import {Habit} from "../../models/habit";
 import {Router} from "@angular/router";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
+import {IconStorageService} from "../../services/icon-storage.service";
+import {IconDefinition} from "@fortawesome/free-regular-svg-icons";
 
 @Component({
   selector: 'app-create-habit',
@@ -24,14 +26,15 @@ export class CreateHabitComponent implements OnInit {
     name: new FormControl('', Validators.required),
     unit: new FormControl('', Validators.required),
     goal: new FormControl(undefined, [Validators.required, Validators.min(1)]),
-    icon: new FormControl('other', Validators.required),
+    icon: new FormControl('none', Validators.required),
     startDate: new FormControl(),
     description: new FormControl('')
   })
   userHabits: Habit[] | undefined;
   today = dayjs().format('YYYY-MM-DD');
+  iconItems: { name: string; icon: IconDefinition; }[] | undefined;
 
-  constructor(private habitService: HabitService, private router: Router) {
+  constructor(private habitService: HabitService, private iconStorageService: IconStorageService, private router: Router) {
 
   }
 
@@ -46,6 +49,7 @@ export class CreateHabitComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.iconItems = this.iconStorageService.getIcons();
     this.habitService.getHabits().pipe(take(1)).subscribe(res => {
       this.userHabits = res;
     });
