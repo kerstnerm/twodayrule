@@ -40,9 +40,4 @@ export class DashboardComponent implements OnInit {
       this.habitService.setHabits({data: this.habitsArray}).pipe(take(1)).subscribe();
     }
   }
-
-  checkHabitToShow(startDate: firebase.firestore.Timestamp, selectedDate: string | undefined) {
-    if (selectedDate) return dayjs(startDate.toDate()).format('YYYY-MM-DD') <= selectedDate;
-    return false;
-  }
 }

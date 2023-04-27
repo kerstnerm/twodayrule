@@ -10,7 +10,6 @@ import {TippyDirective} from "@ngneat/helipopper";
 import {SkeletonHabitComponent} from "../../components/skeleton-habit/skeleton-habit.component";
 import {CreateHabitComponent} from "../create-habit/create-habit.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {AngularMyDatePickerModule} from "angular-mydatepicker";
 import {FilterHabitsByDatePipe} from "../../pipes/filter-habits-by-date.pipe";
 
 @NgModule({
@@ -29,7 +28,6 @@ import {FilterHabitsByDatePipe} from "../../pipes/filter-habits-by-date.pipe";
     FontAwesomeModule,
     TippyDirective,
     FormsModule,
-    AngularMyDatePickerModule,
     ReactiveFormsModule
   ]
 })

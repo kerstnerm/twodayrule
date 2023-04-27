@@ -6,6 +6,7 @@ import {HabitService} from "../../services/habit.service";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import {take} from "rxjs";
+import {debounce} from "../../decorators/debounce";
 
 @Component({
   selector: 'app-habit',
@@ -42,6 +43,7 @@ export class HabitComponent implements OnInit, OnChanges {
     this.currentValue = currentValue;
   }
 
+  @debounce(200)
   increaseCurrentValue() {
     if (this.habit) {
       const history = this.habit.history || [];
