@@ -30,6 +30,7 @@ export class DashboardComponent implements OnInit {
   }
 
   selectDate($event: string) {
+    console.log($event)
     this.selectedDate = $event;
   }
 

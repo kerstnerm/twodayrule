@@ -47,8 +47,12 @@ export class HabitService {
     for (const habit of todayHabits as Habit[]) {
       let count = 0;
       for (const history of habit.history) {
-        count += history.value;
+        if (dayjs(history.date.toDate()).format('YYYY-MM-DD') === dayjs().format('YYYY-MM-DD'))
+        {
+          count += history.value;
+        }
       }
+
       if (habit.goal > count) {
         notDoneHabit ++
       }
