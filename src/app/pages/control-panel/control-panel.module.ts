@@ -8,10 +8,12 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {HabitComponent} from "../../components/habit/habit.component";
 import {TippyDirective} from "@ngneat/helipopper";
 import {SkeletonHabitComponent} from "../../components/skeleton-habit/skeleton-habit.component";
-import {CreateHabitComponent} from "../create-habit/create-habit.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FilterHabitsByDatePipe} from "../../pipes/filter-habits-by-date.pipe";
 import {IconDisplayComponent} from "../../components/icon-display/icon-display.component";
+import {KnobModule} from "primeng/knob";
+import {CreateUpdateHabitComponent} from "../create-update-habit/create-update-habit.component";
+import {DetailsHabitComponent} from "../details-habit/details-habit.component";
 
 @NgModule({
   declarations: [
@@ -20,9 +22,10 @@ import {IconDisplayComponent} from "../../components/icon-display/icon-display.c
     DatePickerComponent,
     HabitComponent,
     SkeletonHabitComponent,
-    CreateHabitComponent,
+    CreateUpdateHabitComponent,
     FilterHabitsByDatePipe,
-    IconDisplayComponent
+    IconDisplayComponent,
+    DetailsHabitComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +33,8 @@ import {IconDisplayComponent} from "../../components/icon-display/icon-display.c
     FontAwesomeModule,
     TippyDirective,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    KnobModule
   ]
 })
 export class ControlPanelModule { }

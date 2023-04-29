@@ -152,7 +152,7 @@
     symbol-observable "4.0.0"
     yargs "17.6.2"
 
-"@angular/common@^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0", "@angular/common@^15.2.0", "@angular/common@15.2.8":
+"@angular/common@^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0", "@angular/common@^15.2.0", "@angular/common@^15.2.1", "@angular/common@15.2.8":
   version "15.2.8"
   resolved "https://registry.npmjs.org/@angular/common/-/common-15.2.8.tgz"
   integrity sha512-yLDQihiRcVl38HrWMPbqgzOaSUw85AQH5BsGdjbS6BpoBQj3EXOpccCMFsuxOKxPG4toatgawNqrEnK0Jpv9Mw==
@@ -182,7 +182,7 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/core@^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0", "@angular/core@^15.0.0", "@angular/core@^15.2.0", "@angular/core@>=14", "@angular/core@>=14.0.0", "@angular/core@15.2.8":
+"@angular/core@^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0", "@angular/core@^15.0.0", "@angular/core@^15.2.0", "@angular/core@^15.2.1", "@angular/core@>=14", "@angular/core@>=14.0.0", "@angular/core@15.2.8":
   version "15.2.8"
   resolved "https://registry.npmjs.org/@angular/core/-/core-15.2.8.tgz"
   integrity sha512-NDs+g4uM4EhyCvluf8a0YBCFXsDAEfCMHOD5cS00Bl+liTQ7JwtmepkWXMyjLB92irC9JaR79kdy4BoIKOh8WA==
@@ -212,7 +212,7 @@
     tslib "^2.0.0"
     winston "^3.0.0"
 
-"@angular/forms@^15.2.0":
+"@angular/forms@^15.2.0", "@angular/forms@^15.2.1":
   version "15.2.8"
   resolved "https://registry.npmjs.org/@angular/forms/-/forms-15.2.8.tgz"
   integrity sha512-VyevVj20DdQWjAQUyiFTe+DAzqG9GqfAOWn376Y/lhPcwxAojXePTGNgtQud566/urDrNrP5haaLD6O36/3n+w==
@@ -5643,6 +5643,13 @@ pretty-bytes@^5.3.0:
   resolved "https://registry.npmjs.org/pretty-bytes/-/pretty-bytes-5.6.0.tgz"
   integrity sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==
 
+primeng@15.4.1:
+  version "15.4.1"
+  resolved "https://registry.npmjs.org/primeng/-/primeng-15.4.1.tgz"
+  integrity sha512-j2unOQZk6756l6SgkzcmlHF6JlawF0bIjKTgAPWwT+S5RYeWEjpCPg/ABV8TylwW7CTNQX2oCHbyqCAuhtr++w==
+  dependencies:
+    tslib "^2.3.0"
+
 proc-log@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/proc-log/-/proc-log-3.0.0.tgz"
@@ -5985,7 +5992,7 @@ rxfire@^6.0.0:
   dependencies:
     tslib "^1.9.0 || ~2.1.0"
 
-"rxjs@^6.0.0 || ^7.0.0", "rxjs@^6.5.3 || ^7.4.0", rxjs@^7.5.5, "rxjs@~6.6.0 || ^7.0.0", rxjs@~7.8.0:
+"rxjs@^6.0.0 || ^7.0.0", "rxjs@^6.0.0 || ^7.5.0", "rxjs@^6.5.3 || ^7.4.0", rxjs@^7.5.5, "rxjs@~6.6.0 || ^7.0.0", rxjs@~7.8.0:
   version "7.8.0"
   resolved "https://registry.npmjs.org/rxjs/-/rxjs-7.8.0.tgz"
   integrity sha512-F2+gxDshqmIub1KdvZkaEfGDwLNpPvk9Fs6LD/MyQxNgMds/WH9OdDDXOmxUZpME+iSK3rQCctkL0DYyytUqMg==
@@ -7198,7 +7205,7 @@ yargs@^17.2.1, yargs@17.6.2:
     y18n "^5.0.5"
     yargs-parser "^21.1.1"
 
-"zone.js@~0.11.4 || ~0.12.0 || ~0.13.0", zone.js@~0.12.0:
+"zone.js@^0.10.2 || ^0.11.0 || ^0.12.0 || ^0.13.0", "zone.js@~0.11.4 || ~0.12.0 || ~0.13.0", zone.js@~0.12.0:
   version "0.12.0"
   resolved "https://registry.npmjs.org/zone.js/-/zone.js-0.12.0.tgz"
   integrity sha512-XtC+I5dXU14HrzidAKBNMqneIVUykLEAA1x+v4KVrd6AUPWlwYORF8KgsVqvgdHiKZ4BkxxjvYi/ksEixTPR0Q==

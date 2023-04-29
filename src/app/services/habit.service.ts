@@ -16,7 +16,7 @@ export class HabitService {
   constructor(private angularFirestore: AngularFirestore,
               private angularFireAuth: AngularFireAuth) { }
 
-  getHabits() {
+  getHabits(): Observable<Habit[]> {
     return this.angularFireAuth.user.pipe(
       switchMap(res => this.angularFirestore.collection(this.dbPath).doc(res?.uid).valueChanges()),
       tap((res: any) => {
@@ -26,7 +26,15 @@ export class HabitService {
         console.log(res);
         return res.data;
       })
-    ) as Observable<Habit[]>;
+    );
+  }
+
+  getHabit(uid: string) {
+    return this.getHabits().pipe(
+      map(res => {
+        return res.find(habit => habit.uid === uid);
+      })
+    )
   }
 
   setEmptyHabits(uid: string | undefined) {

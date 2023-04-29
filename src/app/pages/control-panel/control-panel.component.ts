@@ -6,7 +6,7 @@ import {Router} from "@angular/router";
 import {HabitService} from "../../services/habit.service";
 
 @Component({
-  selector: 'app-welcome',
+  selector: 'app-control-panel',
   templateUrl: './control-panel.component.html',
   styleUrls: ['./control-panel.component.scss']
 })

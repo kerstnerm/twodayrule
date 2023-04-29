@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateHabitComponent } from './create-habit.component';
+import { CreateUpdateHabitComponent } from './create-update-habit.component';
 
 describe('CreateHabitComponent', () => {
-  let component: CreateHabitComponent;
-  let fixture: ComponentFixture<CreateHabitComponent>;
+  let component: CreateUpdateHabitComponent;
+  let fixture: ComponentFixture<CreateUpdateHabitComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateHabitComponent ]
+      declarations: [ CreateUpdateHabitComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CreateHabitComponent);
+    fixture = TestBed.createComponent(CreateUpdateHabitComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -3,9 +3,9 @@ import {ControlPanelComponent} from "./control-panel.component";
 import {NgModule} from "@angular/core";
 import {redirectUnauthorizedTo} from "@angular/fire/auth-guard";
 import {AngularFireAuthGuard} from "@angular/fire/compat/auth-guard";
-import {LoginComponent} from "../auth/login/login.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
-import {CreateHabitComponent} from "../create-habit/create-habit.component";
+import {CreateUpdateHabitComponent} from "../create-update-habit/create-update-habit.component";
+import {DetailsHabitComponent} from "../details-habit/details-habit.component";
 
 const redirectUnauthorizedToAuth = () => redirectUnauthorizedTo(['/auth']);
 
@@ -22,7 +22,11 @@ export const routes = [
       },
       {
         path: 'habits/create',
-        component: CreateHabitComponent
+        component: CreateUpdateHabitComponent
+      },
+      {
+        path: 'habits/details/:id',
+        component: DetailsHabitComponent
       },
       {path: '**', redirectTo: 'dashboard'},
     ]
