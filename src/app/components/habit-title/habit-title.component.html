@@ -1,0 +1,12 @@
+<div class="flex items-center justify-center">
+  <div>
+    <app-icon-display [icon]="habit?.icon"></app-icon-display>
+  </div>
+  <div class="mx-2">
+    <span class="mb-2 text-lg font-semibold tracking-tight text-gray-900 dark:text-white">{{habit?.name}}</span>
+  </div>
+  <div>
+    <span *ngIf="habit?.isActive" class="flex w-3 h-3 bg-green-500 rounded-full" tp="active"></span>
+    <span *ngIf="!habit?.isActive" class="flex w-3 h-3 bg-red-500 rounded-full" tp="inactive"></span>
+  </div>
+</div>

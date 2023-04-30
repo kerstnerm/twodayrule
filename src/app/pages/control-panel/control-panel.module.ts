@@ -14,6 +14,7 @@ import {IconDisplayComponent} from "../../components/icon-display/icon-display.c
 import {KnobModule} from "primeng/knob";
 import {CreateUpdateHabitComponent} from "../create-update-habit/create-update-habit.component";
 import {DetailsHabitComponent} from "../details-habit/details-habit.component";
+import {HabitTitleComponent} from "../../components/habit-title/habit-title.component";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {DetailsHabitComponent} from "../details-habit/details-habit.component";
     CreateUpdateHabitComponent,
     FilterHabitsByDatePipe,
     IconDisplayComponent,
-    DetailsHabitComponent
+    DetailsHabitComponent,
+    HabitTitleComponent
   ],
   imports: [
     CommonModule,

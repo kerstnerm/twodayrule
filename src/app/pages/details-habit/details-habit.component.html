@@ -1,15 +1,44 @@
-<div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
-  <div class="flex justify-between" *ngIf="habit$ | async as habit">
-    <div >
-      <app-create-update-habit [create]="false" [setHabit]="habit"></app-create-update-habit>
-    </div>
-    <div class="text-center justify-center justify-self-center content-center justify-items-center">
+<div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14" *ngIf="habit$ | async as habit">
+  <button
+    class="text-white m-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+    routerLink="/app"
+    type="button">
+    Back
+  </button>
+  <div class="bg-white dark:text-gray-900 rounded-lg py-1 my-3">
+    <app-habit-title [habit]="habit"></app-habit-title>
+  </div>
+  <div class="flex justify-around">
+    <div>
       <p-knob
         [size]="250"
         [strokeWidth]="9"
-        [max]="5"
+        [(ngModel)]="knobValue"
+        [max]="habit.goal"
+        [valueColor]="'rgba(35,70,171,0.6)'"
+        [showValue]="true"
       >
       </p-knob>
+      <p class="text-center font-normal text-gray-500 dark:text-gray-400 my-3">{{todayDateString}}</p>
+      <button
+        (click)="saveValue()"
+        [disabled]="knobValue === originalValue"
+        [ngClass]="{'bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800' : knobValue !== originalValue}"
+        class="w-full bg-gray-600 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+        type="button">
+        Save value
+      </button>
+    </div>
+  </div>
+  <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700">
+  <div class="flex justify-around">
+    <div>
+      <app-create-update-habit [create]="false" [setHabit]="habit"></app-create-update-habit>
+    </div>
+    <div>
+      <section class="bg-white dark:bg-gray-900 p-4 rounded-lg">
+        <p class="text-center font-normal text-gray-500 dark:text-gray-400 my-3">History</p>
+      </section>
     </div>
   </div>
 </div>
