@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import {AuthService} from "./auth.service";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {BehaviorSubject, map, Observable, switchMap, tap} from "rxjs";
-import {UserProfile} from "../models/user-profile";
 import {Habit} from "../models/habit";
 import * as dayjs from "dayjs";
 
