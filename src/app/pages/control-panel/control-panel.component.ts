@@ -13,6 +13,7 @@ import {HabitService} from "../../services/habit.service";
 export class ControlPanelComponent implements OnInit{
   profile$: Observable<UserProfile> | undefined;
   showDropdownUser = false;
+  showAsideMenu = false;
   constructor(public authService: AuthService, public router: Router, public habitService: HabitService) {
   }
 

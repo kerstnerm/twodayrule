@@ -1,12 +1,12 @@
-<div class="flex justify-between md:grid-cols-7 xs:grid-cols-1 gap-4 mb-4">
+<div class="flex justify-between md:grid-cols-7 xs:grid-cols-1 gap-3 mb-4">
   <div  (click)="left()"
        class="bg-gray-50 dark:bg-gray-800 w-10 border border-gray-200 flex items-center justify-center h-16 rounded cursor-pointer">
     <p class="text-md text-gray-400 dark:text-gray-500 dark:text-white"> < </p>
   </div>
   <div (click)="selectDate(date)" *ngFor="let date of dateList"
        [ngClass]="date.selected ? 'bg-gray-100 dark:bg-gray-300' : 'bg-gray-50 dark:bg-gray-800'"
-       class="w-36 border border-gray-200 flex items-center justify-center h-16 rounded cursor-pointer">
-    <p class="text-md text-gray-400 dark:text-gray-500 dark:text-white"> {{date.value | date: 'MMM d.'}}</p>
+       class="w-48 border border-gray-200 flex items-center justify-center h-16 rounded cursor-pointer">
+    <p class="text-md text-gray-400 dark:text-gray-500 dark:text-white text-sm"> {{date.value | date: 'MMM d.'}}</p>
   </div>
   <div (click)="right()"
     class="bg-gray-50 dark:bg-gray-800 w-10 border border-gray-200 flex items-center justify-center h-16 rounded cursor-pointer">
