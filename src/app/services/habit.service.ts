@@ -18,9 +18,11 @@ export class HabitService {
     return this.angularFireAuth.user.pipe(
       switchMap(res => this.angularFirestore.collection(this.dbPath).doc(res?.uid).valueChanges()),
       tap((res: any) => {
-        this.calculateTodayNotDoneHabits(res.data);
-        this.calculateStatistics(res.data);
-        this.setInactiveHabits(res.data);
+        if (res) {
+          this.calculateTodayNotDoneHabits(res.data);
+          this.calculateStatistics(res.data);
+          this.setInactiveHabits(res.data);
+        }
       }),
       map((res: {data: Habit[]}) => {
         console.log(res);

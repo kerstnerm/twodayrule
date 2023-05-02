@@ -13,6 +13,7 @@ import {AngularFireAuthGuardModule} from "@angular/fire/compat/auth-guard";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {popperVariation, provideTippyConfig, tooltipVariation} from "@ngneat/helipopper";
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,

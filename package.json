@@ -27,6 +27,7 @@
     "@ngneat/helipopper": "^7.1.1",
     "@ngneat/overview": "^4.1.0",
     "@sweetalert2/ngx-sweetalert2": "^12.1.0",
+    "@swimlane/ngx-charts": "^20.1.2",
     "@types/uuid": "^9.0.1",
     "dayjs": "^1.11.7",
     "firebase": "^9.20.0",

@@ -1,0 +1,14 @@
+<div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
+  <ng-container *ngIf="habits$ | async as habits">
+
+    <ng-container *ngFor="let habit of habits">
+      {{habit.name}}
+      <ngx-charts-bar-vertical [legendTitle]="habit.name"
+                               [legend]="true"
+                               [results]="habit.results"
+      ></ngx-charts-bar-vertical>
+    </ng-container>
+
+
+  </ng-container>
+</div>

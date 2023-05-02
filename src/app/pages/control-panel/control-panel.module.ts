@@ -16,6 +16,8 @@ import {CreateUpdateHabitComponent} from "../create-update-habit/create-update-h
 import {DetailsHabitComponent} from "../details-habit/details-habit.component";
 import {HabitTitleComponent} from "../../components/habit-title/habit-title.component";
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
+import {ChartStatisticsComponent} from "../chart-statistics/chart-statistics.component";
+import {BarChartModule} from "@swimlane/ngx-charts";
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
     FilterHabitsByDatePipe,
     IconDisplayComponent,
     DetailsHabitComponent,
-    HabitTitleComponent
+    HabitTitleComponent,
+    ChartStatisticsComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +41,8 @@ import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
     FormsModule,
     ReactiveFormsModule,
     KnobModule,
-    SweetAlert2Module
+    SweetAlert2Module,
+    BarChartModule
   ]
 })
 export class ControlPanelModule { }
