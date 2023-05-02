@@ -19,6 +19,7 @@ export class HabitService {
       switchMap(res => this.angularFirestore.collection(this.dbPath).doc(res?.uid).valueChanges()),
       tap((res: any) => {
         this.calculateTodayNotDoneHabits(res.data);
+        this.calculateStatistics(res.data);
       }),
       map((res: {data: Habit[]}) => {
         console.log(res);
@@ -48,7 +49,7 @@ export class HabitService {
   }
 
   private calculateTodayNotDoneHabits(data: Habit[]) {
-    const todayHabits = data.filter((h: Habit) => dayjs(h.startDate.toDate()).format('YYYY-MM-DD') <= dayjs().format('YYYY-MM-DD'));
+    const todayHabits = data.filter((h: Habit) => dayjs(h.startDate.toDate()).format('YYYY-MM-DD') <= dayjs().format('YYYY-MM-DD') && h.isActive);
     let notDoneHabit = 0;
     for (const habit of todayHabits as Habit[]) {
       let count = 0;
@@ -64,5 +65,33 @@ export class HabitService {
       }
     }
     this.todayHabits$.next(notDoneHabit);
+  }
+
+  private calculateStatistics(data: Habit[]) {
+    for (const habit of data) {
+      const dateStrings: string[] | undefined = [];
+      /* habit.history.sort((a,b) => {
+        return a.date.toDate().getTime() - b.date.toDate().getTime()
+      });
+       */
+      for (const history of habit.history) {
+        dateStrings.push(dayjs(history.date.toDate()).format('YYYY-MM-DD'))
+      }
+      const uniqueDateStrings = [...new Set(dateStrings)];
+      const stats = [];
+      for (const dateStr of uniqueDateStrings) {
+        let statItem = {
+          day: dateStr,
+          value: 0
+        }
+        for (const history of habit.history) {
+          if (dateStr === dayjs(history.date.toDate()).format('YYYY-MM-DD')) {
+            statItem.value++;
+          }
+        }
+        stats.push(statItem);
+      }
+      habit.statistics = stats;
+    }
   }
 }
