@@ -12,5 +12,5 @@ export interface Habit {
   startDate: Timestamp;
   unit: string;
   history: { date: Timestamp; value: number }[];
-  statistics?: {day: string; value: number}[];
+  statistics?: {day: string; value: number, reached: boolean}[];
 }
