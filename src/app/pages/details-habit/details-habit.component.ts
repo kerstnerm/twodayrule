@@ -44,7 +44,6 @@ export class DetailsHabitComponent implements OnInit {
 
   saveValue() {
     const value = this.knobValue - this.originalValue;
-    console.log(value);
     this.habitService.getHabits().pipe(take(1)).subscribe(res => {
       const idx = res?.findIndex(h => h.uid === this.route.snapshot.params['id']);
       const item = {
