@@ -12,6 +12,7 @@ import {environment} from "../environments/environment";
 import {AngularFireAuthGuardModule} from "@angular/fire/compat/auth-guard";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {popperVariation, provideTippyConfig, tooltipVariation} from "@ngneat/helipopper";
+import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {popperVariation, provideTippyConfig, tooltipVariation} from "@ngneat/hel
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [
     provideTippyConfig({

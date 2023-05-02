@@ -152,7 +152,7 @@
     "symbol-observable" "4.0.0"
     "yargs" "17.6.2"
 
-"@angular/common@^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0", "@angular/common@^15.2.0", "@angular/common@^15.2.1", "@angular/common@15.2.8":
+"@angular/common@^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0", "@angular/common@^14.0.0 || ^15.0.0", "@angular/common@^15.2.0", "@angular/common@^15.2.1", "@angular/common@15.2.8":
   "integrity" "sha512-yLDQihiRcVl38HrWMPbqgzOaSUw85AQH5BsGdjbS6BpoBQj3EXOpccCMFsuxOKxPG4toatgawNqrEnK0Jpv9Mw=="
   "resolved" "https://registry.npmjs.org/@angular/common/-/common-15.2.8.tgz"
   "version" "15.2.8"
@@ -182,7 +182,7 @@
   dependencies:
     "tslib" "^2.3.0"
 
-"@angular/core@^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0", "@angular/core@^15.0.0", "@angular/core@^15.2.0", "@angular/core@^15.2.1", "@angular/core@>=14", "@angular/core@>=14.0.0", "@angular/core@15.2.8":
+"@angular/core@^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0", "@angular/core@^14.0.0 || ^15.0.0", "@angular/core@^15.0.0", "@angular/core@^15.2.0", "@angular/core@^15.2.1", "@angular/core@>=14", "@angular/core@>=14.0.0", "@angular/core@15.2.8":
   "integrity" "sha512-NDs+g4uM4EhyCvluf8a0YBCFXsDAEfCMHOD5cS00Bl+liTQ7JwtmepkWXMyjLB92irC9JaR79kdy4BoIKOh8WA=="
   "resolved" "https://registry.npmjs.org/@angular/core/-/core-15.2.8.tgz"
   "version" "15.2.8"
@@ -1926,6 +1926,13 @@
   "integrity" "sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg=="
   "resolved" "https://registry.npmjs.org/@socket.io/component-emitter/-/component-emitter-3.1.0.tgz"
   "version" "3.1.0"
+
+"@sweetalert2/ngx-sweetalert2@^12.1.0":
+  "integrity" "sha512-jECRdLhdw7dsEDv22uJHVbsgQEQVOY64BPRicTfKzEqsIyLwbl3kHh24lCg3UFlD2zLFuqRHrROohU9Wz7q74Q=="
+  "resolved" "https://registry.npmjs.org/@sweetalert2/ngx-sweetalert2/-/ngx-sweetalert2-12.1.0.tgz"
+  "version" "12.1.0"
+  dependencies:
+    "tslib" "^2.0.0"
 
 "@tootallnate/once@2":
   "integrity" "sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A=="
@@ -6529,6 +6536,11 @@
   "integrity" "sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w=="
   "resolved" "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   "version" "1.0.0"
+
+"sweetalert2@^11.0.0", "sweetalert2@^11.7.3":
+  "integrity" "sha512-fUN/fyVSBZNtY4Rr/Qtxn7tNNnlRAbUhQxTQ9uOo0xVMIHBmqq4/9pau5N9dB2pvkB353XL/ywRAycscLoYU3w=="
+  "resolved" "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.7.3.tgz"
+  "version" "11.7.3"
 
 "symbol-observable@4.0.0":
   "integrity" "sha512-b19dMThMV4HVFynSAM1++gBHAbk2Tc/osgLIBZMKsyqh34jb2e8Os7T6ZW/Bt3pJFdBTd2JwAnAAEQV7rSNvcQ=="

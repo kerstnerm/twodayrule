@@ -15,6 +15,7 @@ import {KnobModule} from "primeng/knob";
 import {CreateUpdateHabitComponent} from "../create-update-habit/create-update-habit.component";
 import {DetailsHabitComponent} from "../details-habit/details-habit.component";
 import {HabitTitleComponent} from "../../components/habit-title/habit-title.component";
+import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {HabitTitleComponent} from "../../components/habit-title/habit-title.comp
     TippyDirective,
     FormsModule,
     ReactiveFormsModule,
-    KnobModule
+    KnobModule,
+    SweetAlert2Module
   ]
 })
 export class ControlPanelModule { }

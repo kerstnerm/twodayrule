@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import * as dayjs from "dayjs";
 import {v4 as uuidv4} from 'uuid';
@@ -34,12 +34,13 @@ export class CreateUpdateHabitComponent implements OnInit {
       description: new FormControl(habit.description || '', {nonNullable: true})
     })
   }
+  @ViewChild('successSwal') successSwal: ElementRef | undefined;
 
   userHabits: Habit[] | undefined;
   iconItems: { name: string; icon: IconDefinition; }[] | undefined;
   habitForm: FormGroup<HabitForm> | undefined;
 
-  constructor(private habitService: HabitService, private iconStorageService: IconStorageService, private router: Router) {
+  constructor(private habitService: HabitService, private iconStorageService: IconStorageService, public router: Router) {
 
   }
 
@@ -49,16 +50,14 @@ export class CreateUpdateHabitComponent implements OnInit {
         let item = <Habit>this.habitForm?.getRawValue();
         item.startDate = firebase.firestore.Timestamp.fromDate(new Date());
         this.userHabits?.push(item);
-        this.habitService.setHabits({data: this.userHabits}).pipe(take(1)).subscribe(() => {
-          this.router.navigate(['/app'])
-        });
+        this.habitService.setHabits({data: this.userHabits}).pipe(take(1)).subscribe(() => this.successSwal?.nativeElement.click());
       } else {
         const date = dayjs(<string>this.habitForm?.controls['startDate'].value).toDate();
         const idx = this.userHabits?.findIndex(h => h.uid === this.habitForm?.controls['uid'].value);
         let item = <Habit>this.habitForm?.getRawValue();
         item.startDate = firebase.firestore.Timestamp.fromDate(date);
         this.userHabits[idx] = item;
-        this.habitService.setHabits({data: this.userHabits}).pipe(take(1)).subscribe();
+        this.habitService.setHabits({data: this.userHabits}).pipe(take(1)).subscribe(() => this.successSwal?.nativeElement.click());
       }
 
     }

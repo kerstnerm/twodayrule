@@ -90,7 +90,9 @@ export class HabitService {
         if (statItem.value >= habit.goal) statItem.reached = true;
         stats.push(statItem);
       }
-      habit.statistics = stats;
+      habit.statistics = stats.sort((a, b) => {
+        return dayjs(new Date(a.day)).toDate().getTime() - dayjs(new Date(b.day)).toDate().getTime()
+      });
     }
   }
 
