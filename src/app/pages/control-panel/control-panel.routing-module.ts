@@ -7,6 +7,7 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
 import {CreateUpdateHabitComponent} from "../create-update-habit/create-update-habit.component";
 import {DetailsHabitComponent} from "../details-habit/details-habit.component";
 import {ChartStatisticsComponent} from "../chart-statistics/chart-statistics.component";
+import {ViewChartComponent} from "../chart-statistics/view-chart/view-chart.component";
 
 const redirectUnauthorizedToAuth = () => redirectUnauthorizedTo(['/auth']);
 
@@ -32,6 +33,10 @@ export const routes = [
       {
         path: 'charts',
         component: ChartStatisticsComponent
+      },
+      {
+        path: 'charts/:id',
+        component: ViewChartComponent
       },
       {path: '**', redirectTo: 'dashboard'},
     ]

@@ -53,32 +53,12 @@ export class ChartStatisticsComponent implements OnInit{
       }
     }
   ]
-  habits$: Observable<{ name: string; results: { name: string; value: number }[] }[]>;
+  habits$: Observable<Habit[]> | undefined;
 
   constructor(private habitService: HabitService) {
-    this.habits$ = habitService.getHabits().pipe(
-      map(habits => {
-        const items: {name: string, results: { name: string; value: number; }[]}[] = [];
-        habits.map(habit => {
-          const nameValuePair: { name: string; value: number; }[] = [];
-          habit.statistics?.map(s => {
-            const item = {
-              name: s.day,
-              value: s.value
-            };
-            nameValuePair.push(item);
-          })
-          const barValue = {
-            name: habit.name,
-            results: nameValuePair
-          }
-          items.push(barValue);
-        })
-        return items;
-      })
-    );
+
   }
   ngOnInit() {
-
+    this.habits$ = this.habitService.getHabits();
   }
 }

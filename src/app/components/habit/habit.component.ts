@@ -20,6 +20,7 @@ export class HabitComponent implements OnInit, OnChanges {
   todayDate: string | undefined;
   @Output() updateHabit = new EventEmitter<Habit>();
   progressbarWidth = 0;
+  @Input() isViewChart = false;
 
   constructor(private habitService: HabitService) {
   }

@@ -18,6 +18,7 @@ import {HabitTitleComponent} from "../../components/habit-title/habit-title.comp
 import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 import {ChartStatisticsComponent} from "../chart-statistics/chart-statistics.component";
 import {BarChartModule} from "@swimlane/ngx-charts";
+import {ViewChartComponent} from "../chart-statistics/view-chart/view-chart.component";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {BarChartModule} from "@swimlane/ngx-charts";
     IconDisplayComponent,
     DetailsHabitComponent,
     HabitTitleComponent,
-    ChartStatisticsComponent
+    ChartStatisticsComponent,
+    ViewChartComponent
   ],
   imports: [
     CommonModule,

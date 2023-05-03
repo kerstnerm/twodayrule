@@ -13,4 +13,5 @@ export interface Habit {
   unit: string;
   history: { date: Timestamp; value: number }[];
   statistics?: {day: string; value: number, reached: boolean}[];
+  chartResults?: { name: string; value: number; }[];
 }

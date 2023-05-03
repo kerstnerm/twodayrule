@@ -1,0 +1,19 @@
+<div class="mt-16 text-center rounded-lg shadow">
+  <ng-container *ngIf="habit$ | async as habit">
+    <div class="justify-items-center justify-center">
+      <div class="bg-white dark:bg-gray-800 text-center font-normal text-gray-500 dark:text-gray-400 my-3 px-3 rounded-lg">
+        <app-habit-title [habit]="habit"></app-habit-title>
+      </div>
+    </div>
+  <ngx-charts-bar-vertical [legendTitle]="habit.name + ' (in ' + habit.unit + ')' || ''"
+                           [legend]="true"
+                           [showXAxisLabel]="true"
+                           [xAxis]="'Date'"
+                           [showYAxisLabel]="true"
+                           [yAxis]="habit.unit"
+                           [roundDomains]="true"
+                           [roundEdges]="true"
+                           [results]="habit.chartResults || []"
+  ></ngx-charts-bar-vertical>
+  </ng-container>
+</div>
