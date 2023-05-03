@@ -25,7 +25,6 @@ export class HabitService {
         }
       }),
       map((res: {data: Habit[]}) => {
-        console.log(res);
         return res.data;
       })
     );
