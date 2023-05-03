@@ -34,6 +34,7 @@
         [strokeWidth]="9"
         [(ngModel)]="knobValue"
         [max]="habit.goal"
+        [step]="habit.goal > 1000 ? 50 : 1"
         [valueColor]="'#fb7185'"
         [showValue]="true"
       >
