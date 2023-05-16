@@ -7,6 +7,7 @@ import {AuthService} from "../../../services/auth.service";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  title = 'Sign in to your account';
 
   constructor(public authService: AuthService) {
   }

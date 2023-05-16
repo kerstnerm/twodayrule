@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {AuthService} from "../../../services/auth.service";
 import {SignUpModel} from "../../../models/sign-up-model";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-register',
@@ -15,6 +16,8 @@ export class RegisterComponent {
     confirmPassword: '',
     description: ''
   };
+
+  @ViewChild('registerForm', {static: true}) registerForm: NgForm | undefined;
 
   constructor(public authService: AuthService) {
 

@@ -1,7 +1,7 @@
 <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white my-3">
   Sign up
 </h1>
-<form class="space-y-1 md:space-y-2" novalidate="novalidate" (ngSubmit)="authService.signUp(signUpData)">
+<form #registerForm="ngForm" role="form" class="space-y-1 md:space-y-2" novalidate="novalidate" (ngSubmit)="authService.signUp(signUpData)">
   <div>
     <label for="displayName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Display name</label>
     <input #displayName [(ngModel)]="signUpData.displayName" type="text" name="displayName" id="displayName"
@@ -15,6 +15,7 @@
            placeholder="name@company.com" required="">
     <ng-container *ngIf="!email.control.valid && email.dirty">
       <div
+        id="email-alert"
         class="my-3 flex p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
         role="alert">
         <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20"
@@ -48,6 +49,7 @@
            required="">
     <ng-container *ngIf="confirmPassword.control.dirty && signUpData.password !== signUpData.confirmPassword">
       <div
+        id="password-alert"
         class="my-3 flex p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
         role="alert">
         <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20"
