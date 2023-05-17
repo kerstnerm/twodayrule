@@ -1,16 +1,3 @@
-/// <reference types="cypress" />
-
-// Welcome to Cypress!
-//
-// This spec file contains a variety of sample tests
-// for a todo list app that are designed to demonstrate
-// the power of writing tests in Cypress.
-//
-// To learn more about how Cypress works and
-// what makes it such an awesome testing tool,
-// please read our getting started guide:
-// https://on.cypress.io/introduction-to-cypress
-
 describe('login page test', () => {
   beforeEach(() => {
     cy.visit('https://twodayrule-kerstner.web.app')
@@ -25,7 +12,7 @@ describe('login page test', () => {
     cy.get('[type=submit]').should('have.length', 1)
   })
 
-  it('login error', () => {
+  it('login error displays error msg', () => {
     const email = 'sample@user.huu'
     const password = 'System_1234'
     cy.get('#email').type(email);
@@ -34,20 +21,13 @@ describe('login page test', () => {
     cy.get('.sr-only').should('have.text', 'Error info');
   })
 
-  it('login success', () => {
+  it('login success then logout', () => {
     const email = 'sample@user.hu'
     const password = 'System_1234'
     cy.get('#email').type(email);
     cy.get('#password').type(password);
-    cy.get('button').click();
+    cy.get('form').submit();
+    cy.url().should('includes', 'dashboard')
+    cy.get('li').last().click();
   })
-
-  it('logout', () => {
-    const email = 'sample@user.hu'
-    const password = 'System_1234'
-    cy.get('#email').type(email);
-    cy.get('#password').type(password);
-    cy.get('button').click();
-  })
-
 })
