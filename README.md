@@ -1,27 +1,35 @@
-# TwoDayRule
+# Two-day rule app
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
+The two-day rule is a web application used to control your habits.
 
-## Development server
+## Description
+The application is used to track your habits. You can create any habits in the application. Important to reach your target in every 48 hours otherwise the habit fails.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Demo
+You can [try](https://twodayrule-kerstner.web.app/) it online!
 
-## Code scaffolding
+Demo user: sample@user.hu/System_1234
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Installation
 
-## Build
+Clone the repo, then use the npm package manager to install application.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm install
+```
 
-## Running unit tests
+## Usage
+Start application in localhost.
+``` 
+npm run start
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Testing
+Start unit testing with Jasmine framework on Karma runner.
+``` 
+npm run test
+```
+Start end-to-end testing with Cypress.
+``` 
+npm run e2e
+```
