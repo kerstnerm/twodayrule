@@ -1,6 +1,6 @@
 # Two-day rule app
 
-The two-day rule is a web application used to control your habits.
+The two-day rule is a web application used to track your habits.
 
 ## Description
 The application is used to track your habits. You can create any habits in the application. Important to reach your target in every 48 hours otherwise the habit fails.
@@ -12,7 +12,7 @@ Demo user: sample@user.hu/System_1234
 
 ## Installation
 
-Clone the repo, then use the npm package manager to install application.
+Clone the repo, then use the npm package manager to install dependencies.
 
 ```bash
 npm install
