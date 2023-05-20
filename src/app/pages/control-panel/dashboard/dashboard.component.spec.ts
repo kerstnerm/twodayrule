@@ -7,6 +7,7 @@ import {SkeletonHabitComponent} from "../../../components/skeleton-habit/skeleto
 import {AuthService} from "../../../services/auth.service";
 import {take} from "rxjs";
 import * as dayjs from "dayjs";
+import {By} from "@angular/platform-browser";
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -49,4 +50,10 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
     expect(component.selectedDate).toBe(dayjs().format('YYYY-MM-DD'));
   });
+
+  it('should display selected date', () => {
+    fixture.detectChanges();
+    const title = fixture.debugElement.query(By.css('#selectedDate')).nativeElement;
+    expect(title.innerHTML).toBe(component.selectedDate);
+  })
 });

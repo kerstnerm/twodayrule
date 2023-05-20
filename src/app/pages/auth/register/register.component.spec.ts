@@ -42,14 +42,6 @@ describe('RegisterComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should url register url match', () => {
-    /* const expectedUrl = '/auth/register';
-    router.navigate([expectedUrl]);
-    const currentUrl = router.url.toString();
-    console.log(location.pathname);
-    expect(currentUrl).toBe(expectedUrl); */
-  });
-
   it('should have a submit button', () => {
     const submitBtn = fixture.debugElement.nativeElement.querySelector('[type=submit]');
     expect(submitBtn).toBeDefined();
