@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {BehaviorSubject, map, Observable, switchMap, tap} from "rxjs";
@@ -11,8 +11,10 @@ import * as dayjs from "dayjs";
 export class HabitService {
   private dbPath = 'habits';
   todayHabits$ = new BehaviorSubject(0);
+
   constructor(private angularFirestore: AngularFirestore,
-              private angularFireAuth: AngularFireAuth) { }
+              private angularFireAuth: AngularFireAuth) {
+  }
 
   getHabits(): Observable<Habit[]> {
     return this.angularFireAuth.user.pipe(
@@ -24,7 +26,7 @@ export class HabitService {
           this.setInactiveHabits(res.data);
         }
       }),
-      map((res: {data: Habit[]}) => {
+      map((res: { data: Habit[] }) => {
         return res.data;
       })
     );
@@ -42,7 +44,7 @@ export class HabitService {
     this.angularFirestore.collection(this.dbPath).doc(uid).set({data: []});
   }
 
-  setHabits(obj: {data: Habit[]}) {
+  setHabits(obj: { data: Habit[] }) {
     return this.angularFireAuth.user.pipe(
       switchMap(res => this.angularFirestore.collection(this.dbPath).doc(res?.uid).valueChanges().pipe(
         switchMap(result => this.angularFirestore.collection(this.dbPath).doc(res?.uid).set(obj))
@@ -56,14 +58,13 @@ export class HabitService {
     for (const habit of todayHabits as Habit[]) {
       let count = 0;
       for (const history of habit.history) {
-        if (dayjs(history.date.toDate()).format('YYYY-MM-DD') === dayjs().format('YYYY-MM-DD'))
-        {
+        if (dayjs(history.date.toDate()).format('YYYY-MM-DD') === dayjs().format('YYYY-MM-DD')) {
           count += history.value;
         }
       }
 
       if (habit.goal > count) {
-        notDoneHabit ++
+        notDoneHabit++
       }
     }
     this.todayHabits$.next(notDoneHabit);
@@ -101,7 +102,9 @@ export class HabitService {
     for (let habit of data) {
       const reachedItems = habit.statistics?.filter(s => s.reached === true);
       if (reachedItems && reachedItems.length > 0) {
-        let lastReachedItem = reachedItems?.reduce((a, b) => {return a > b ? a : b})
+        let lastReachedItem = reachedItems?.reduce((a, b) => {
+          return a > b ? a : b
+        })
         if (dayjs().diff(lastReachedItem.day, 'hours') > 48) {
           habit.isActive = false;
         }
