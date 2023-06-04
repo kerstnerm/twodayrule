@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {HabitService} from "../../services/habit.service";
-import {Observable, take, tap} from "rxjs";
+import {map, Observable, switchMap, take, tap} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Habit} from "../../models/habit";
 import * as dayjs from "dayjs";
@@ -44,24 +44,33 @@ export class DetailsHabitComponent implements OnInit {
 
   saveValue() {
     const value = this.knobValue - this.originalValue;
-    this.habitService.getHabits().pipe(take(1)).subscribe(res => {
-      const idx = res?.findIndex(h => h.uid === this.route.snapshot.params['id']);
-      const item = {
-        date: firebase.firestore.Timestamp.fromDate(new Date()),
-        value: value
-      }
-      res[idx].history.push(item);
-      this.habitService.setHabits({data: res}).pipe(take(1)).subscribe();
-
-    })
+    this.habitService.getHabits().pipe(
+      take(1),
+      map(res => {
+        const idx = res?.findIndex(h => h.uid === this.route.snapshot.params['id']);
+        const item = {
+          date: firebase.firestore.Timestamp.fromDate(new Date()),
+          value: value
+        }
+        res[idx].history.push(item);
+        return res;
+      }),
+      switchMap(res => this.habitService.setHabits({data: res}).pipe(take(1)))
+    ).subscribe();
   }
 
   removeHabit(removeItemUid: string) {
-    this.habitService.getHabits().pipe(take(1)).subscribe(res => {
-      const filteredHabits = res.filter(h => h.uid !== removeItemUid)
-      this.habitService.setHabits({data: filteredHabits}).pipe(take(1)).subscribe(() => {
-        this.successRemoveButton?.nativeElement.click();
-      });
-    });
+    this.habitService.getHabits().pipe(
+      take(1),
+      map(res => {
+        return res.filter(h => h.uid !== removeItemUid);
+      }),
+      switchMap(filteredHabits => this.habitService.setHabits({data: filteredHabits}).pipe(
+        take(1),
+        tap(() => {
+          this.successRemoveButton?.nativeElement.click();
+        })
+      ))
+    ).subscribe();
   }
 }
